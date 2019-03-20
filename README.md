@@ -70,6 +70,8 @@ The contents of this project are divided into various categories which are liste
 
 30.	Options and customization with pandas
 
+31.     References
+
 
 ================================================================================
 
@@ -1837,5 +1839,23 @@ set the parameter value with option_context
 There is a difference between the first and the second print statements. The first statement prints the value set by **option_context()** which is temporary within the with context itself. After with context, the second print statement prints the configured value.
 
 
+================================================================================
+
+
+## 31. References
+
+
+The material in this project is taken from the following books and websites:-
+
+
+1.	https://en.wikipedia.org/wiki/Pandas_(software)
+
+2.	https://pandas.pydata.org/
+
+3.	https://www.tutorialspoint.com/python_pandas
+
+4.	Python for Data Analysis by Wes McKinney
+
+5.	Mastering pandas by Femi Anthony
 
 
