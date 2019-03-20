@@ -73,7 +73,9 @@ The contents of this project are divided into various categories which are liste
 
 ================================================================================
 
+
 ## 1. Introduction to Pandas
+
 
 Today, Python is considered as the most popular programming language for doing data science work.  The reason behind this popularity is that Python provides great packages for doing data analysis and visualization work. 
 
@@ -84,6 +86,11 @@ According to the Wikipedia page on Pandas,
 “Pandas offers data structures and operations for manipulating numerical tables and time series. It is free software released under the three-clause BSD license. The name is derived from the term "panel data", an econometrics term for data sets that include observations over multiple time periods for the same individuals.”
 
 In this project, I explore Pandas and various data analysis tools provided by Pandas.
+
+
+================================================================================
+
+
 ## 2. Key features of Pandas
 
 Some key features of Pandas are as follows:-
@@ -100,12 +107,17 @@ Some key features of Pandas are as follows:-
 10.	It delivers fast performance. Also, it can be speeded up even more by making use of Cython (C extensions to Python).
 
 
+================================================================================
+
 
 ## 3. Advantages of Pandas
 Pandas is a core component of the Python data analysis toolkit. Pandas provides data structure and operations facilities, which is particularly useful for data analysis. There are various advantages of using Pandas for data analysis. These advantages are as follows:-
 1.	**Data representation** - It represents data in a form that is very much suited for data analysis through its Dataframe and Series data structures.
 2.	**Data subsetting and filtering** - It provides for easy subsetting and filtering of data. It provides procedures that are suited for data analysis.
 3.	**Concise and clear code** - It provides functionality to write clear and concise code. It allows us to focus on the task at hand, rather than have to write tedious code.
+
+
+================================================================================
 
 
 ## 4. Importing Pandas
@@ -118,6 +130,8 @@ Also, I will import Numpy as well, because it is very useful library for scienti
 `import numpy as np`
 
 
+================================================================================
+
 
 ## 5. Data structures in Pandas
 Pandas provide easy to use data structures. 
@@ -129,7 +143,7 @@ These data structures are built on top of Numpy array, which means they are fast
 I have described these data structures in the following sections.
 
 
-
+================================================================================
 
 
 ## 6. Pandas Series
@@ -161,6 +175,8 @@ The parameters of the constructor are as follows –
 
 -	**copy** - Copy input data. Default value is False.
 
+
+================================================================================
 
 
 ## 7. Pandas DataFrame
@@ -217,7 +233,7 @@ A pandas Dataframe can be created using various inputs like –
 -	Another Dataframe
 
 
-
+================================================================================
 
 
 ## 8. Pandas Panel
@@ -233,7 +249,7 @@ They are −
 `minor_axis − axis 2`, it is the columns of each of the DataFrames.
 
 
-
+================================================================================
 
 
 
@@ -258,11 +274,18 @@ So, I use the **read_csv()** function to import the file as follows:-
 `df = pd.read_csv(data)`
 
 
+
+================================================================================
+
+
 ## 10. Dataset description
 I have used **BlackFriday** dataset for this project. The dataset is the sample of the transactions made in a retail store.
 The dataset contains 12 variables and 537577 instances.
 I have downloaded this dataset from the following url:-
 https://www.kaggle.com/mehdidag/black-friday
+
+
+================================================================================
 
 
 ## 11. Exploratory Data Analysis
@@ -286,7 +309,10 @@ We can view the concise summary of dataframe with **info()** method as follows:-
 `df.info()`
 
 
-## 11. Handle missing values with pandas
+================================================================================
+
+
+## 12. Handle missing values with pandas
 We can check the total number of missing values in each column in the dataset with the following command:-
 `df.isnull().sum()`
 
@@ -348,6 +374,10 @@ Asserts
 `assert pd.notnull(df).all().all()`
 
 The above command does not throw any AssertionError. So, it is confirmed that there are no missing values in the dataframe.
+
+
+================================================================================
+
 
 ## 13.	Indexing and slicing in pandas
 In this section, I will discuss how to slice and dice the data and get the subset of pandas dataframe.
@@ -452,6 +482,8 @@ Below are the examples of row selection using .iloc indexer
 
 #### select second last row of dataframe
 `df1.iloc[-2]`
+
+
 ### Columns selection using .iloc indexer
 
 
@@ -476,20 +508,21 @@ Below are the examples of row selection using .iloc indexer
 ### Multiple row and column selections using .iloc indexer
 
 
+
 #### select first five rows of dataframe
 `df1.iloc[0:5]`
 
 
 
-### select first five columns of data frame with all rows
+#### select first five columns of data frame with all rows
 `df1.loc[:, 0:5]`
 
 
-### select 1st, 5th and 10th rows with 1st, 4th and 7th columns
+#### select 1st, 5th and 10th rows with 1st, 4th and 7th columns
 `df1.iloc[[0,4,9]], [0,3,6]]`
 
 
-### select first 5 rows and 5th, 6th, 7th columns of data frame
+#### select first 5 rows and 5th, 6th, 7th columns of data frame
 `df1.iloc[0:5, 5:8]`
 
 
@@ -579,12 +612,16 @@ The below code is equivalent to
 `df2[df2==0]`
 
 It replaces values with `NaN` where the condition is false.
+
+
 ### Indexing with query() method
 
 There is a **query()** method in the DataFrame objects that allows selection using an expression. This method queries the columns of a DataFrame with a boolean expression.
 
 `df2.query('(Product_Category_1 > Product_Category_2) & (Product_Category_2 > Product_Category_3)')`
 
+
+================================================================================
 
 
 ## 14. Indexing and reindexing in pandas
@@ -632,6 +669,8 @@ There is a function called **reset_index()** which transfers the index values in
 `food_indexed2.reset_index()`
 
 
+================================================================================
+
 
 ## 15. MultiIndex or Advanced indexing
 
@@ -675,6 +714,8 @@ Now, I will swap the "Items" and "Mode" columns in the above hierarchical datafr
 
 `sales2=sales1.swaplevel('Mode', 'Items')`
 
+
+================================================================================
 
 
 ## 16. Sorting in pandas
@@ -745,8 +786,10 @@ The following example illustrates the idea:-
 `df2.sort_values(by='Product_Category_1', ascending=False)`
 
 
+================================================================================
 
-## 16. Categorical data in pandas
+
+## 17. Categorical data in pandas
 
 
 We can check the data types of variables in the dataset with the following command:-
@@ -831,8 +874,10 @@ Series methods like `Series.value_counts()` will return the frequency counts of 
 `df3['Gender'].value_counts(ascending=True)`
 
 
+================================================================================
 
-## 17. Basic functionality in pandas
+
+## 18. Basic functionality in pandas
 
 
 ### Series basic functionality
@@ -907,10 +952,10 @@ The following tables lists the important attributes or methods in Dataframe basi
 - **tail()** - Returns last n rows.
 
 
+================================================================================
 
 
-
-## 18. Descriptive statistics in pandas
+## 19. Descriptive statistics in pandas
 
 
 
@@ -932,9 +977,9 @@ There exists a large number of methods for computing descriptive statistics and 
 
 The following table list down the important functions under Descriptive Statistics in Python Pandas. 
 
-- 1   **count()** -	Number of non-null observations
+- 1     **count()** -	Number of non-null observations
 
-- 2	  **sum()**	  - Sum of values
+- 2	  **sum()** -	Sum of values
 
 
 - 3	  **mean()**  -	Mean of values
@@ -996,8 +1041,10 @@ It includes the argument which is used to pass necessary information regarding w
 `df4.describe()`
 
 
+================================================================================
 
-## 19. Statistical functions in pandas
+
+## 20. Statistical functions in pandas
 
 Statistical functions help us to understand and analyze the behavior of data. In this section, I will discuss few statistical functions, which we can apply on Pandas objects.
 
@@ -1101,7 +1148,11 @@ There are a number of common statistical functions. These are listed below:-
 
 The **apply()** function takes an extra **func** argument and performs generic rolling computations. The **func** argument should be a single function that produces a single value from an ndarray input.
 
-## 20. Window functions in pandas
+
+================================================================================
+
+
+## 21. Window functions in pandas
 
 For working with numerical data, Pandas provide few variants like **rolling**, **expanding** and **exponentially moving weights** for window statistics. 
 
@@ -1143,8 +1194,10 @@ This function can be applied on a series of data. We specify the **min_periods=n
 Window functions are used in finding the trends within the data graphically by smoothing the curve. If there is a lot of variation in the data, then we can apply window functions to smooth out the curve or the trend.
 
 
+================================================================================
 
-## 21. Aggregation in pandas
+
+## 22. Aggregations in pandas
 
 Once the rolling, expanding and ewm objects are created, several methods are available to perform aggregations on data.
 
@@ -1183,7 +1236,10 @@ Once the rolling, expanding and ewm objects are created, several methods are ava
 df6.aggregate({'Product_Category_1' : np.sum ,'Product_Category_2' : np.mean})
 
 
-## 22. Iteration in pandas
+================================================================================
+
+
+## 23. Iteration in pandas
 
 The behaviour of basic iteration over pandas objects depends on the type. When iterating over a series, it is regarded as array-like, and basic iteration produces the values. Other data structures, like dataframe and panel, follow the **dict-like** convention of iterating over the **keys** of the objects.
 Iterating a dataframe gives column names.
@@ -1197,8 +1253,10 @@ To iterate over the rows of the DataFrame, we can use the following functions �
 - **itertuples()** − iterate over the rows as namedtuples
 
 
+================================================================================
 
-## 23. Function application in pandas
+
+## 24. Function application in pandas
 
 There are three important methods that enable us to apply our own or another library's functions to pandas objects. These methods differentiate on their scope of usage. These functions expect to operate on an entire dataframe, row- or column-wise operation, or element wise operation. These methods are described below:-
 
@@ -1207,6 +1265,8 @@ There are three important methods that enable us to apply our own or another lib
 - Row or Column Wise Function Application: **apply()**
 
 - Element wise Function Application: **applymap()**
+
+
 ### Table-wise function application:pipe()
 
 Custom operations can be performed by passing the function and the appropriate number of parameters as pipe arguments. Thus, operation is performed on the whole DataFrame.
@@ -1215,10 +1275,11 @@ For example, if we want to add a value 10 to all the elements in the DataFrame. 
 
 
 `def addten(x1,x2):`
-   ``return x1+x2`
+       ``return x1+x2`
 
 `df7=df.copy()` 
-`df7.pipe(addten,10)`
+
+`df7.pipe(addten,10)``
 
 
 ### Row or Column Wise Function Application: apply()
@@ -1240,10 +1301,10 @@ The methods **applymap()** on dataframe and analogously **map()** on series acce
 `df7.applymap(lambda x:x*100)`
 
 
+================================================================================
 
 
-
-## 24. Pandas GroupBy operations
+## 25. Pandas GroupBy operations
 
 A groupby operation involves one of the following operations on the original object. They are as follows:−
 
@@ -1389,6 +1450,10 @@ Filtration filters the data on a defined criteria and returns the subset of data
 
 `df10.groupby('Gender').filter(lambda x: len(x) > 4)`
 
+
+================================================================================
+
+
 ## 26. Pandas merging and joining 
 
 
@@ -1485,6 +1550,8 @@ inner join
 `pd.merge(batsmen, bowler, on='subject_id', how='inner')`
 
 
+================================================================================
+
 
 ## 27. Pandas concatenation operation
 
@@ -1572,6 +1639,8 @@ A useful shortcut to concat are the append instance methods on Series and DataFr
 `batsmen.append(bowler)`
 
 
+================================================================================
+
 
 ## 28. Reshaping by melt and pivot
 
@@ -1613,9 +1682,14 @@ In this case, the **pivot_table()** method comes to rescue. It works like pivot,
 
 `df.pivot_table(values=None, index=None, columns=None, aggfunc='mean', fill_value=None, margins=False, dropna=True, margins_name='All')`
 
+
+================================================================================
+
+
 ## 29. Reshaping by stacking and unstacking
 
 There are two other methods called **stack()** and **unstack()** which closely resemble the **pivot()** method. These methods are designed to work together with multiindex objects. The functionality of these methods is described below:-
+
 
 ### Stacking
 
@@ -1648,6 +1722,8 @@ I will convert the stacked dataframe df16 back to original form as follows:-
 
 `df16.unstack()`
 
+
+================================================================================
 
 
 ## 30. Options and customization with pandas
