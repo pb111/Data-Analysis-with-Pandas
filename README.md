@@ -71,7 +71,7 @@ The contents of this project are divided into various categories which are liste
 30.	Options and customization with pandas
 
 
-=========================================================================
+=================================================================================
 
 ## 1. Introduction to Pandas
 
