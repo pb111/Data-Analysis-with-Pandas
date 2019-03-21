@@ -2266,7 +2266,7 @@ index (height, weight), makes it the most inner row index and reshuffles the cel
 df15.stack()`
 
 
-## Unstacking
+### Unstacking
 
 
 It is the inverse operation of stacking. It means "pivot" a level of the (possibly hierarchical) row index to the column axis, producing a reshaped dataframe with a new inner-most level of column labels.
