@@ -82,11 +82,14 @@ The contents of this project are divided into various categories which are liste
 
 Today, Python is considered as the most popular programming language for doing data science work.  The reason behind this popularity is that Python provides great packages for doing data analysis and visualization work. 
 
+
 **Pandas** is one of those packages that makes analysing data much easier. Pandas is an open source library for data analysis in Python. It was developed by Wes McKinney in 2008. Over the years, it has become the standard library for data analysis using Python.
 
-According to the Wikipedia page on Pandas, 
 
-“Pandas offers data structures and operations for manipulating numerical tables and time series. It is free software released under the three-clause BSD license. The name is derived from the term "panel data", an econometrics term for data sets that include observations over multiple time periods for the same individuals.”
+According to the Wikipedia page on Pandas -
+
+**“Pandas offers data structures and operations for manipulating numerical tables and time series. It is free software released under the three-clause BSD license. The name is derived from the term "panel data", an econometrics term for data sets that include observations over multiple time periods for the same individuals.”**
+
 
 In this project, I explore Pandas and various data analysis tools provided by Pandas.
 
@@ -96,17 +99,37 @@ In this project, I explore Pandas and various data analysis tools provided by Pa
 
 ## 2. Key features of Pandas
 
+
 Some key features of Pandas are as follows:-
 
+
 1.	It provides tools for reading and writing data from a wide variety of sources such as CSV files, excel files, databases such as SQL, JSON files.
+
+
 2.	It provides different data structures like series, dataframe and panel for data manipulation and indexing.
+
+
 3.	It can handle wide variety of data sets in different formats – time series, heterogeneous data, tabular and matrix data.
+
+
 4.	It can perform variety of operations on datasets. It includes subsetting, slicing, filtering, merging, joining, groupby, reordering and reshaping operations.
+
+
 5.	It can deal with missing data by either deleting them or filling them with zeros or a suitable test statistic.
+
+
 6.	It can be used for parsing and conversion of data.
+
+
 7.	It provides data filtration techniques.
+
+
 8.	It provides time series functionality – date range generation, frequency conversion, moving window statistics, data shifting and lagging.
+
+
 9.	It integrates well with other Python libraries such as Scikit-learn, statsmodels and SciPy.
+
+
 10.	It delivers fast performance. Also, it can be speeded up even more by making use of Cython (C extensions to Python).
 
 
@@ -114,9 +137,17 @@ Some key features of Pandas are as follows:-
 
 
 ## 3. Advantages of Pandas
+
+
 Pandas is a core component of the Python data analysis toolkit. Pandas provides data structure and operations facilities, which is particularly useful for data analysis. There are various advantages of using Pandas for data analysis. These advantages are as follows:-
+
+
 1.	**Data representation** - It represents data in a form that is very much suited for data analysis through its Dataframe and Series data structures.
+
+
 2.	**Data subsetting and filtering** - It provides for easy subsetting and filtering of data. It provides procedures that are suited for data analysis.
+
+
 3.	**Concise and clear code** - It provides functionality to write clear and concise code. It allows us to focus on the task at hand, rather than have to write tedious code.
 
 
@@ -124,12 +155,23 @@ Pandas is a core component of the Python data analysis toolkit. Pandas provides 
 
 
 ## 4. Importing Pandas
+
+
 In order to use Pandas in our work, we need to import the Pandas library first. We can import the Pandas library with the following command:-
+
+
 `import pandas`
-Usually, we import the Pandas library by appending the alias `as pd`.  It makes things easier because now instead of writing `pandas.command` we need to write `pd.command`. So, we 
-will import pandas with the following command:-
+
+
+Usually, we import the Pandas library by appending the alias `as pd`.  It makes things easier because now instead of writing `pandas.command` we need to write `pd.command`. So, I will import pandas with the following command:-
+
+
 `import pandas as pd`
+
+
 Also, I will import Numpy as well, because it is very useful library for scientific computing with Python. I will import Numpy with the following command:-
+
+
 `import numpy as np`
 
 
@@ -137,12 +179,26 @@ Also, I will import Numpy as well, because it is very useful library for scienti
 
 
 ## 5. Data structures in Pandas
+
+
 Pandas provide easy to use data structures. 
+
+
 There are three main data structures in Pandas. They are:-
--	Series
--	Dataframe
--	Panel
-These data structures are built on top of Numpy array, which means they are fast.
+
+
+-	**Series**
+
+
+-	**Dataframe**
+
+
+-	**Panel**
+
+
+These data structures are built on top of Numpy array, which means they are fast. 
+
+
 I have described these data structures in the following sections.
 
 
@@ -150,31 +206,50 @@ I have described these data structures in the following sections.
 
 
 ## 6. Pandas Series
+
+
 A Pandas Series is a one-dimensional array like structure with homogeneous data.  
 
 
 The data can be of any type (integer, string, float, etc.). The axis labels are collectively called index. 
+
+
 For example, the following series is a collection of integers 10, 20, 30, 40, 50, 60, 70, 80, 90, 100.
 
+
 ### Key Points of Pandas Series
+
+
 -	Homogeneous data
+
+
 -	Size of series immutable
+
+
 -	Values of data mutable
 
 
 ### Series Constructor
+
+
 A Pandas Series can be created using the following constructor −
+
+
 `pandas. Series (data, index, dtype, copy)`
 
+
 The parameters of the constructor are as follows –
+
 
 -	**data** - data takes various forms like ndarray, list, dictionary, constants, etc.
 
 
 -	**index**- index values must be unique, hashable and have the same length as data.   
                   The default index is RangeIndex (0, 1, 2, …, n) if no index is passed.
+                  
       
 -	**dtype** - dtype is for data type. If none, data type will be inferred.
+
 
 -	**copy** - Copy input data. Default value is False.
 
@@ -184,39 +259,80 @@ The parameters of the constructor are as follows –
 
 ## 7. Pandas DataFrame
 
+
 A Dataframe is a two-dimensional data structure. So, data is aligned in a tabular fashion in rows and columns. 
-Its column types can be heterogeneous:  - that is, of varying types. It is similar to structured arrays in NumPy with mutability added.
+Its column types can be heterogeneous:  - that is, of varying types. It is similar to structured arrays in NumPy 
+with mutability added.
+
 
 ### Properties of Dataframe are as follows:-
+
+
 -	The dataframe is conceptually analogous to a table or spreadsheet of data. 
+
+
 -	Its columns are of different types – float64, int, bool, and so on.
+
+
 -	A Dataframe column is a Series structure.
+
+
 -	Its size is mutable – columns can be inserted and deleted.
+
+
 -	It has labelled axes (rows and columns).
--	It can be thought of as a dictionary of Series structures where both the rows and   
-             columns are indexed, denoted as `index` in the case of rows and `columns` in the 
-             case of columns.     
+
+
+-	It can be thought of as a dictionary of Series structures where both the rows and columns are indexed, denoted as `index` in    
+        the case of rows and `columns` in the case of columns.
+        
+        
 -	It can perform arithmetic operations on rows and columns.
+
 
 ### Dataframe Constructor
 
+
 Dataframe is the most commonly used data structure in pandas. 
 
+
 A pandas Dataframe can be created using the following constructor-
+
+
 `pandas.DataFrame(data, index, columns, dtype, copy)`
 
-The constructor accepts many different types of arguments: 
+
+The constructor accepts many different types of arguments :-
+
+
 -	Dictionary of 1D ndarrays, lists, dictionaries, or Series structures 
+
+
 -	2D NumPy array
--	Structured or record ndarray    
--	Series structures    
+
+
+-	Structured or record ndarray
+
+
+-	Series structures
+
+
 -	Another Dataframe structure 
 
-The parameters description of the constructor is as follows –
+
+The parameters description of the constructor is as follows :–
+
+
 -**data** - data takes various forms like ndarray, series, map, lists, dict, constants and also another DataFrame.
+
+
 -**index**- Index or array-like 
-         Index to use for resulting frame. Will default to RangeIndex if no indexing information   
-         part of  input data and no index provided.     
+
+
+         Index to use for resulting frame. Will default to RangeIndex if no indexing information 
+         part of  input data and no index provided.
+         
+         
 -**columns**- Index or array-like
 
 
@@ -224,15 +340,31 @@ The parameters description of the constructor is as follows –
             
 -**dtype** - data type of each column
 
+
 -**copy** - boolean, default False
+
+
             Copy data from inputs. Only affects DataFrame / 2d ndarray input
+            
 
 ### Dataframe Creation
-A pandas Dataframe can be created using various inputs like –
+
+
+A pandas Dataframe can be created using various inputs like :–
+
+
 -	Lists
+
+
 -	Dict
+
+
 -	Series
+
+
 -	Numpy ndarrays
+
+
 -	Another Dataframe
 
 
@@ -240,51 +372,94 @@ A pandas Dataframe can be created using various inputs like –
 
 
 ## 8. Pandas Panel
+
+
 A panel is a 3D container of data. 
+
 
 The term Panel data is derived from **econometrics** and is partially responsible for the name pandas − pan(el)-da(ta)-s.
 
+
 The names for the 3 axes are intended to give some semantic meaning to describing operations involving panel data. 
 
+
 They are −
+
+
 `items − axis 0`, each item corresponds to a DataFrame contained inside.
+
+
 `major_axis − axis 1`, it is the index (rows) of each of the DataFrames.
+
+
 `minor_axis − axis 2`, it is the columns of each of the DataFrames.
 
 
 ================================================================================
 
 
-
 ## 9. Data Import with Pandas
+
+
 Pandas input output API provides several functions that can be used to import and export various file formats. 
+
 
 Below is the list of file formats and the corresponding functions to import these file formats.
 
+
 - Flat files - read_csv()
+
+
 - Excel files - read_excel(), ExcelWriter()
+
+
 - JSON files - read_json()
+
+
 - HTML tables - read_html()
+
+
 - SAS files - read_sas()
+
+
 - SQL files - read_sql(), read_sql_query(), read_sql_table()
+
+
 - STATA files - read_stata()
+
+
 - pickle object - read_pickle()
+
+
 - HDF5 files - read_hdf()
 
-In this project, I work with the **BlackFriday dataset** which is a comma-separated values (CSV) file type. In a CSV file type, the data is stored as a comma-separated values where each row is separated by a new line, and each column by a comma (,).
-So, I use the **read_csv()** function to import the file as follows:-
-`data = 'C:/datasets/BlackFriday.csv'`
-`df = pd.read_csv(data)`
 
+In this project, I work with the **BlackFriday dataset** which is a comma-separated values (CSV) file type. In a CSV file type, 
+the data is stored as a comma-separated values where each row is separated by a new line, and each column by a comma (,).
+
+
+So, I use the **read_csv()** function to import the file as follows :-
+
+
+`data = 'C:/datasets/BlackFriday.csv'`
+
+
+`df = pd.read_csv(data)`
 
 
 ================================================================================
 
 
 ## 10. Dataset description
+
+
 I have used **BlackFriday** dataset for this project. The dataset is the sample of the transactions made in a retail store.
 The dataset contains 12 variables and 537577 instances.
+
+
 I have downloaded this dataset from the following url:-
+
+
 https://www.kaggle.com/mehdidag/black-friday
 
 
@@ -293,22 +468,46 @@ https://www.kaggle.com/mehdidag/black-friday
 
 ## 11. Exploratory Data Analysis
 
+
 The next step is to conduct exploratory data analysis.
 
+
 ### check the type of df
+
+
 I have imported the dataset. The next step is to check its type. We can check its type with the following command:-
+
+
 `type(df)`
+
+
 We can see that the `df` is the pandas dataframe.
 
+
 ### check shape of dataframe
+
+
 The next step is to check the shape of the dataframe. We can check the shape of the dataframe as follows:-
+
+
 `df.shape`
+
+
 ### view the first five rows of the dataframe
+
+
 We can view the first 5 rows of the dataframe with **head()** function as follows:-
+
+
 `df.head()`
 
+
 ### view concise summary of dataframe
+
+
 We can view the concise summary of dataframe with **info()** method as follows:-
+
+
 `df.info()`
 
 
@@ -316,65 +515,118 @@ We can view the concise summary of dataframe with **info()** method as follows:-
 
 
 ## 12. Handle missing values with pandas
+
+
 We can check the total number of missing values in each column in the dataset with the following command:-
+
+
 `df.isnull().sum()`
 
 
-
-
-
 ### isna() and notna() functions to detect 'NA' values
-Pandas provides `isna()` and `notna()` functions to detect 'NA' values. 
-These are also methods on Series and Dataframe objects.
+
+
+Pandas provides `isna()` and `notna()` functions to detect 'NA' values. These are also methods on Series and Dataframe objects.
+
+
 Examples of isna() and notna() commands.
 
-detect ‘NA’ values in the dataframe	
+
+detect ‘NA’ values in the dataframe
+
+
 `df.isna().sum()`
 
+
 detect ‘NA’ values in a particular column in the dataframe
+
+
 `pd.isna(df[‘col_name’])`
+
+
 `df[‘col_name’].notna()`
+
+
 All the missing values are encoded as `NA` values. If the missing values are encoded in different ways we should encode them first.
 
+
 ### Encode missing numerical values
+
+
 Missing values are encoded in different ways. They can appear as `NaN`, `NA`, `?`, `zeros`, `xx`, `-1` or a blank space `“ ”`. 
 We can use various pandas methods to deal with missing values. 
-But, pandas always recognize missing values as `NaN`.  So, it is essential that we should first convert all the `?`, `zeros`, `xx`, `-1` or `“ ”` to `NaN`. If the missing values isn’t identified as `NaN`, then we have to first convert or replace 
-such `non NaN` entry with a `NaN`.
+
+
+But, pandas always recognize missing values as `NaN`.  So, it is essential that we should first convert all the `?`, `zeros`, `xx`, `-1` or `“ ”` to `NaN`. If the missing values isn’t identified as `NaN`, then we have to first convert or replace such 
+`non NaN` entry with a `NaN`.
+
 
 ### Convert '?' to ‘NaN’
+
+
 `df[df == '?'] = np.nan`
 
 
-
-
 ### Handle missing numerical values
+
+
 There are several methods to handle missing values. Each method has its own advantages and disadvantages. The choice of the method is subjective and depends on the nature of data and the missing values. In this section, I have listed the most commonly used methods to deal with missing values. They are as follows:-
 
+
 - Drop missing values with dropna() method
+
+
 - Fill missing values with zeros
+
+
 - Fill missing values with a test statistic
+
+
 - Fill missing values backward or forward
+
 
 In this section, I have fill the missing values with forward or backward filling.
 
+
 The **pad or fill** option fill values forward, while **bfill or backfill** option fill values backward. 
+
+
 The following code helps us to achieve this task:-
+
+
 `df = df.fillna(method = 'pad')`
+
+
 Still, the `Product_Category_2` and `Product_Category_3` have 1 missing value.
+
+
 The first element of each column are NaN. So, in this case **pad** or **fill** option does not work. Here, we should use **bfill** or **backfill** options as follows:-
+
+
 `df = df.fillna(method = 'backfill')`
 
+
 ### Check with ASSERT statement
+
+
 Finally, we should check for missing values programmatically. If we drop or fill missing values, we expect no missing values. 
 We can write an assert statement to verify this. So, we can use an assert statement to programmatically check that no missing or unexpected '0' value is present. This gives confidence that our code is running properly.
+
+
 Assert statement will return nothing if the value being tested is true and will throw an AssertionError if the value is false.
 
+
 Asserts
+
+
 •	assert 1 == 1   (return Nothing if the value is True)
+
+
 •	assert 1 == 2   (return AssertionError if the value is False)
 
+
 `assert pd.notnull(df).all().all()`
+
 
 The above command does not throw any AssertionError. So, it is confirmed that there are no missing values in the dataframe.
 
@@ -383,12 +635,25 @@ The above command does not throw any AssertionError. So, it is confirmed that th
 
 
 ## 13.	Indexing and slicing in pandas
+
+
 In this section, I will discuss how to slice and dice the data and get the subset of pandas dataframe.
+
+
 Pandas provides three types of Multi-axes indexing. Those three types are mentioned in the following table:-
+
+
 - 1. .loc() - Label based
+
+
 - 2. .iloc() - Integer based
+
+
 - 3. .ix()  - Both Label and Integer based
+
+
 Starting with pandas 0.20.0, the .ix indexer is deprecated, in favor of the more strict .iloc and .loc indexers. So, I will not discuss it here and limit the discussion to .loc and .iloc indexers.
+
 
 ### Label based indexing using .loc indexer
 
@@ -396,94 +661,128 @@ Starting with pandas 0.20.0, the .ix indexer is deprecated, in favor of the more
 Pandas provide **.loc indexer** to have purely label based indexing. When slicing, the start bound is also included. 
 Integers are valid labels, but they refer to the label and not the position.
 
+
 .loc() indexer has multiple access methods like −
+
 
 - A single scalar label
 
+
 - A list of labels
 
+
 - A slice object
+
 
 - A Boolean array
 
 
 **Syntax**-
 
+
 .loc() takes two single/list/range operator separated by ','. 
 
+
 The first one indicates the row and the second one indicates columns.
+
 
 Below are the examples of selecting data using .loc() indexer:-
 
 
 make a copy of dataframe
+
+
 `df1 = df.copy()`
 
+
  select first row of dataframe
+ 
+ 
 `df1.loc[0]`
 
 
 select first five rows for a specific column
+
+
 `df1.loc[:,'Purchase'].head()`
 
 
 Select all rows for multiple columns, say list[]
 
+
 `df1.loc[:,['Age','Occupation']]`
 
 
-
 Select first five rows for multiple columns, say list[]
+
 
 `df1.loc[[0, 1, 2, 3, 4],['Age','Occupation']]`
 
 
 Select range of rows for all columns
+
+
 `df1.loc[0:4]`
 
 
 The above functionality can also be given by
-`df1.head()`
 
+
+`df1.head()`
 
 
 ### Integer position based indexing using .iloc() indexer
 
+
 Pandas provides **.iloc indexer** for integer position based indexing.
+
 
 .iloc is primarily integer position based (from 0 to length-1 of the axis), but may also be used with a boolean array. 
 
-.iloc will raise IndexError if a requested indexer is out-of-bounds, except slice indexers which allow out-of-bounds indexing.  Allowed inputs of .iloc indexer are:-
 
-
+.iloc will raise IndexError if a requested indexer is out-of-bounds, except slice indexers which allow out-of-bounds indexing.  
+Allowed inputs of .iloc indexer are:-
 
 
 - An integer e.g. 5.
 
+
 - A list or array of integers [4, 3, 0].
 
+
 - A slice object with ints 1:7.
+
 
 - A boolean array.
 
 
 ### Rows selection using .iloc indexer
 
+
 Below are the examples of row selection using .iloc indexer
 
+
 #### select first row of dataframe
+
+
 `df1.iloc[0]`
 
 
 #### select second row of dataframe
+
+
 `df1.iloc[1]`
 
 
 #### select last row of dataframe
+
+
 `df1.iloc[-1]`
 
 
 #### select second last row of dataframe
+
+
 `df1.iloc[-2]`
 
 
@@ -491,78 +790,106 @@ Below are the examples of row selection using .iloc indexer
 
 
 #### select first column of dataframe
+
+
 `df1.iloc[:,0]`
 
 
 #### select second column of dataframe
+
+
 `df1.iloc[:,1]`
 
 
 
 #### select last column of dataframe
+
+
 `df1.iloc[:,-1]`
 
 
 
 #### select second last column of dataframe
+
+
 `df1.iloc[:,-2]`
 
 
 ### Multiple row and column selections using .iloc indexer
 
 
-
 #### select first five rows of dataframe
+
+
 `df1.iloc[0:5]`
 
 
-
 #### select first five columns of data frame with all rows
+
+
 `df1.loc[:, 0:5]`
 
 
 #### select 1st, 5th and 10th rows with 1st, 4th and 7th columns
+
+
 `df1.iloc[[0,4,9]], [0,3,6]]`
 
 
 #### select first 5 rows and 5th, 6th, 7th columns of data frame
-`df1.iloc[0:5, 5:8]`
 
+
+`df1.iloc[0:5, 5:8]`
 
 
 ### Indexing first occurrence of maximum or minimum values
 
-Pandas provide two functions **idxmax()** and **idxmin()** that return index of first occurrence of maximum or minimum values over requested axis. NA/null values are excluded from the output.
+
+Pandas provide two functions **idxmax()** and **idxmin()** that return index of first occurrence of maximum or minimum values 
+over requested axis. NA/null values are excluded from the output.
+
 
 get index of first occurence of maximum Purchase value 
+
 
 `df1['Purchase'].idxmax()`
 
 
 get the row with the maximum Purchase value 
 
+
 `df1.loc[df1['Purchase'].idxmax()]`
+
 
 ### Indexing a single value with at() and iat()
 
+
 Pandas provides **at()** and **iat()** functions to access a single value for a row and column pair by label or by integer position.
+
 
 get value at 1st row and Purchase column pair
 
+
 `df1.at[1, 'Purchase']`
 
+
 get value at 1st row and 11th column pair
+
 
 `df1.iat[1, 11]`
 
 
 ### Boolean indexing in pandas
 
+
 **Boolean indexing** is the use of boolean vectors to filter and select the data. The operators for boolean indexing are -
+
 
 - 1. | for or, 
 
+
 - 2. & for and,
+
 
 - 3. ~ for not. 
 
@@ -570,56 +897,84 @@ get value at 1st row and 11th column pair
 These must be grouped by using parentheses. Using a boolean vector to index a Series works exactly as in a NumPy ndarray.
 
 
-Conditional selections with boolean arrays using **df.loc[selection]** is the most common method to use with Pandas DataFrames. With boolean indexing or logical selection, we can pass an array or Series of True/False values to the .loc indexer to select the rows where the Series has True values. Then, we will make selections based on the values of different columns in dataset.
+Conditional selections with boolean arrays using **df.loc[selection]** is the most common method to use with Pandas DataFrames. 
+With boolean indexing or logical selection, we can pass an array or Series of True/False values to the .loc indexer to select 
+the rows where the Series has True values. Then, we will make selections based on the values of different columns in dataset.
 
 
-We can use a boolean True/False series to select rows in a pandas dataframe where there are true values. Then, a second argument can be passed to .loc indexer to select other columns of the dataframe with the same label. The columns are referred to by name for the loc indexer and can be a single string, a list of columns, or a slice ":" operation.
+We can use a boolean True/False series to select rows in a pandas dataframe where there are true values. Then, a second argument 
+can be passed to .loc indexer to select other columns of the dataframe with the same label. The columns are referred to by name 
+for the loc indexer and can be a single string, a list of columns, or a slice ":" operation.
 
 
 make a copy of dataframe df
 
+
 `df2 = df.copy()`
 
+
 get the purchase amount with a given user_id and product_id
+
 
 `df2.loc[((df2['User_ID'] == 1000001) & (df2['Product_ID'] == 'P00069042')), 'Purchase']`
 
 
 ### Indexing with isin() method
 
-The **isin()** method of Series, returns a boolean vector. It is true wherever the Series elements exist in passed list. This allows you to select rows where one or more columns have values we want to access. The same method is available for Index objects. It is useful for the cases when we don't know which of the sought labels are in fact present.
 
-DataFrame also has an **isin()** method. When calling isin, we pass a set of values as either an array or dict. If values is an array, isin returns a DataFrame of booleans that is the same shape as the original DataFrame, with True wherever the element is in the sequence of values.
+The **isin()** method of Series, returns a boolean vector. It is true wherever the Series elements exist in passed list. 
+This allows you to select rows where one or more columns have values we want to access. The same method is available 
+for Index objects. It is useful for the cases when we don't know which of the sought labels are in fact present.
+
+
+DataFrame also has an **isin()** method. When calling isin, we pass a set of values as either an array or dict. If values is 
+an array, isin returns a DataFrame of booleans that is the same shape as the original DataFrame, with True wherever the element 
+is in the sequence of values.
+
+
 `values=[1000001,'P00069042','F',0-17,10,'A',2,0,3,6,14,8370]`
 
+
 `df2_indexed=df2.isin(values)`
+
 
 `df2_indexed.head(10)`
 
 
 We can combine DataFrame's isin with the **any()** and **all()** methods to quickly select subsets of the data that meet a given criteria. We can select a row where each column meets its own criterion as follows:-
 
+
 `row_mask = df2.isin(values).any(1)`
+
 
 `df[row_mask]`
 
 
 ### The where() method and masking
 
-We can select values from a Series with a boolean vector and it returns a subset of the data. To guarantee that the output has the same shape as the original data, we can use the where method in Series and DataFrame.
+
+We can select values from a Series with a boolean vector and it returns a subset of the data. To guarantee that the output 
+has the same shape as the original data, we can use the where method in Series and DataFrame.
+
 
 We can select values from a DataFrame with a boolean criterion. It also preserves input data shape.
 
+
 The below code is equivalent to 
 
+
 `df2[df2==0]`
+
 
 It replaces values with `NaN` where the condition is false.
 
 
 ### Indexing with query() method
 
-There is a **query()** method in the DataFrame objects that allows selection using an expression. This method queries the columns of a DataFrame with a boolean expression.
+
+There is a **query()** method in the DataFrame objects that allows selection using an expression. This method queries the 
+columns of a DataFrame with a boolean expression.
+
 
 `df2.query('(Product_Category_1 > Product_Category_2) & (Product_Category_2 > Product_Category_3)')`
 
@@ -629,20 +984,27 @@ There is a **query()** method in the DataFrame objects that allows selection usi
 
 ## 14. Indexing and reindexing in pandas
 
-Reindexing changes the row labels and column labels of a DataFrame. To reindex means to conform the data to match a given set of labels along a particular axis.
+Reindexing changes the row labels and column labels of a DataFrame. To reindex means to conform the data to match a given 
+set of labels along a particular axis.
+
 
 Multiple operations can be accomplished through indexing like:−
 
+
 - Reorder the existing data to match a new set of labels.
+
 
 - Insert missing value (NA) markers in label locations where no data for the label existed.
 
 
 ### Create a new dataframe
 
+
 First of all, I will create a new dataframe as follows:-
 
-let's create a new dataframe 
+
+Let's create a new dataframe 
+
 
 `food = pd.DataFrame({'Place':['Home', 'Hotel', 'Home', 'Hotel'],
                    'Time': ['Lunch', 'Dinner', 'Lunch', 'Dinner'],
@@ -654,20 +1016,28 @@ let's create a new dataframe
 
 DataFrame has a **set_index()** method which takes a column name (for a regular Index) or a list of column names (for a MultiIndex). This method sets the dataframe index using existing columns.
 
+
 I will create a new, re-indexed DataFrame with **set_index()** method as follows:-
+
 
 `food_indexed1=food.set_index('Place')`
 
+
 `food_indexed1`
+
 
 `food_indexed2=food.set_index(['Place', 'Time'])`
 
+
 `food_indexed2`
+
 
 ### Reset the index
 
 
-There is a function called **reset_index()** which transfers the index values into the DataFrame’s columns and sets a simple integer index. This is the inverse operation of set_index().
+There is a function called **reset_index()** which transfers the index values into the DataFrame’s columns and sets a simple 
+integer index. This is the inverse operation of set_index().
+
 
 `food_indexed2.reset_index()`
 
@@ -677,16 +1047,22 @@ There is a function called **reset_index()** which transfers the index values in
 
 ## 15. MultiIndex or Advanced indexing
 
+
 In this section, I will explore indexing with a MultiIndex and other advanced indexing strategies.
+
 
 ### Hierarchical indexing or MultiIndex
 
-The MultiIndex object is the hierarchical analogue of the standard index object which stores the axis labels in pandas objects. A MultiIndex is an array of tuples where each tuple is unique. 
+
+The MultiIndex object is the hierarchical analogue of the standard index object which stores the axis labels in pandas objects. 
+A MultiIndex is an array of tuples where each tuple is unique. 
+
 
 A MultiIndex can be created from a list of arrays (using **MultiIndex.from_arrays()**), an array of tuples (using **MultiIndex.from_tuples()**), a crossed set of iterables (using **MultiIndex.from_product()**), or a DataFrame (using **MultiIndex.from_frame()**). The Index constructor will attempt to return a MultiIndex when it is passed a list of tuples.
 
 
 To demonstrate the concept of hierarchical or multiple indexing, first I will create a hypothetical dataframe as follows:-
+
 
 `sales=pd.DataFrame([['books','online', 200, 50],['books','retail', 250, 75], 
                     ['toys','online', 100, 20],['toys','retail', 140, 30],
@@ -697,23 +1073,30 @@ To demonstrate the concept of hierarchical or multiple indexing, first I will cr
                     columns=['Items', 'Mode', 'Price', 'Profit'])`
 
 
-
 ### Create the hierarchical index in pandas
 
-We can create a hierarchical index in pandas using the **set_index()** function which is used for indexing. First the data is indexed on `Items` and then on `Mode` column as follows:-
+
+We can create a hierarchical index in pandas using the **set_index()** function which is used for indexing. First the data is 
+indexed on `Items` and then on `Mode` column as follows:-
+
 
 `sales1=sales.set_index(['Items', 'Mode'])`
 
 
-
 ### View index in hierarchical index
+
 
 One can view the details of index as shown below:-
 
+
 `sales1.index`
+
+
 ### Swap the column in hierarchical index
 
+
 Now, I will swap the "Items" and "Mode" columns in the above hierarchical dataframe as shown below:-
+
 
 `sales2=sales1.swaplevel('Mode', 'Items')`
 
@@ -723,10 +1106,12 @@ Now, I will swap the "Items" and "Mode" columns in the above hierarchical datafr
 
 ## 16. Sorting in pandas
 
+
 Pandas provides two kinds of sorting. They are:-
 
 
 - 1. Sorting by label
+
 
 - 2. Sorting by actual value
 
@@ -736,40 +1121,55 @@ They are described below:-
 
 ### 1. Sorting by label
 
-We can use the **sort_index()** method to sort the object by labels. DataFrame can be sorted by passing the axis arguments and the order of sorting. By default, sorting is done on row labels in ascending order.
+
+We can use the **sort_index()** method to sort the object by labels. DataFrame can be sorted by passing the axis arguments and 
+the order of sorting. By default, sorting is done on row labels in ascending order.
+
 
 The following examples illustrate the idea of sorting by label.
 
+
 sort the dataframe df2 by label
+
+
 `df2.sort_index()`
 
 
 ### Order of sorting
 
+
 By passing the Boolean value to ascending parameter, the order of the sorting can be controlled. 
 
-sort the dataframe df2 by label in reverse order
-`df2.sort_index(ascending=False)`
 
+sort the dataframe df2 by label in reverse order
+
+
+`df2.sort_index(ascending=False)`
 
 
 ### Sorting by columns
 
+
 By passing the axis argument with a value 0 or 1, the sorting can be done on the row or column labels. 
 
+
 The default value of axis=0. In this case, sorting can be done by rows. 
+
 
 If we set axis=1, sorting is done by columns.
 
 
 sort the dataframe df2 by columns
 
+
 `df2.sort_index(axis=1)`
 
 
 ### 2. Sorting by values
 
+
 The second method of sorting is sorting by values. Pandas provides **sort_values()** method to sort by values. It accepts a 'by' argument which will use the column name of the DataFrame with which the values are to be sorted.
+
 
 The following example illustrates the idea:-
 
@@ -777,14 +1177,14 @@ The following example illustrates the idea:-
 `df2.sort_values(by=['Product_Category_1'])`
 
 
-
-
 #### Sort by multiple columns
+
 
 `df2.sort_values(by=['Product_Category_1', 'Product_Category_2'])`
 
 
 #### Sort in descending order
+
 
 `df2.sort_values(by='Product_Category_1', ascending=False)`
 
@@ -797,82 +1197,102 @@ The following example illustrates the idea:-
 
 We can check the data types of variables in the dataset with the following command:-
 
+
 `df3 = df.copy()`
 
+
 `df3.dtypes`
+
 
 Our dataset has 5 categorical variables. They are **Product_ID**, **Gender**, **Age**, **City_Category** and **Stay_In_Current_City_Years**. They have data types as **object**.
 
 
-
-
-
-
 ### Description of categorical data
 
+
 The **describe()** method on categorical data will produce similar output to a Series or DataFrame of type string.
+
 
 `df3['Gender'].describe()`
 
 
 ### Working with categorical data
 
+
 Categorical data has a categories and a ordered property, which list their possible values and whether the ordering matters or not. These properties are exposed as `s.cat.categories` and `s.cat.ordered`. 
+
 
 If we don't manually specify categories and ordering, they are inferred from the passed arguments.
 
+
 `s.cat.categories`
 
+
 `s.cat.ordered`
+
 
 where `s` is a series object.
 
 
 ### Unique values in categorical data
 
-We can get the unique values in a series object by **unique()** method. It returns categories in the order of appearance, and it only includes values that are actually present.
+
+We can get the unique values in a series object by **unique()** method. It returns categories in the order of appearance, 
+and it only includes values that are actually present.
+
 
 `df3['Gender'].unique()`
+
+
 ### Rename categories
+
 
 Renaming categories is done by assigning new values to the `Series.cat.categories` property or by using the `rename_categories()` method.
 
 
 ### Append new categories
 
+
 Appending categories can be done by using the `add_categories()` method.
 
 
 ### Remove categories
+
 
 Removing categories can be done by using the `remove_categories()` method. Values which are removed are replaced by np.nan.
 
 
 ### Setting categories
 
-If we want to remove and add new categories in one step (which has some speed advantage), or simply set the categories to a predefined scale, we can use `set_categories()` method.
+
+If we want to remove and add new categories in one step (which has some speed advantage), or simply set the categories to 
+a predefined scale, we can use `set_categories()` method.
 
 
 ### Reordering categories
 
-Reordering the categories is possible via the `Categorical.reorder_categories()` and the `Categorical.set_categories()` methods. 
 
+Reordering the categories is possible via the `Categorical.reorder_categories()` and the `Categorical.set_categories()` methods. 
 
 
 ### Operations on categorical data 
 
-There are several operations like `Series.min()`, `Series.max()`, `Series.median()` and `Series.mode()` which are possible with categorical data. 
 
+There are several operations like `Series.min()`, `Series.max()`, `Series.median()` and `Series.mode()` which are possible with categorical data. 
 
 
 ### Frequency counts of categorical data
 
+
 Series methods like `Series.value_counts()` will return the frequency counts of the categories present in the series.
+
 
 `df3['Gender'].value_counts()`
 
 
-`Series.value_counts()` will return the frequency counts of the categories in descending order. To get the categories in ascending order we should set `ascending=True` as follows:-
+`Series.value_counts()` will return the frequency counts of the categories in descending order. To get the categories in 
+ascending order we should set `ascending=True` as follows:-
+
 
 `df3['Gender'].value_counts(ascending=True)`
 
@@ -886,9 +1306,7 @@ Series methods like `Series.value_counts()` will return the frequency counts of 
 ### Series basic functionality
 
 
-
 The following table lists the important attributes or methods in Series basic functionality.
-
 
 
 - **axes** - Returns a list of the row axis labels
@@ -915,14 +1333,10 @@ The following table lists the important attributes or methods in Series basic fu
 - **tail()** - Returns the last n rows.
 
 
-
-
 ### Dataframe basic functionality
 
 
-
 The following tables lists the important attributes or methods in Dataframe basic functionality.
-
 
 
 - **T** - Transposes rows and columns.
@@ -962,7 +1376,8 @@ The following tables lists the important attributes or methods in Dataframe basi
 
 
 
-There exists a large number of methods for computing descriptive statistics and other related operations on Series, DataFrame, and Panel. Most of these are aggregations (hence producing a lower-dimensional result) like sum(), mean(), and quantile(), but some of them, like cumsum() and cumprod(), produce an object of the same size. Generally speaking, these methods take an axis argument, just like ndarray.{sum, std, …}, but the axis can be specified by name or integer.
+There exists a large number of methods for computing descriptive statistics and other related operations on Series, DataFrame, and Panel. Most of these are aggregations (hence producing a lower-dimensional result) like sum(), mean(), and quantile(), but some of them, like cumsum() and cumprod(), produce an object of the same size. Generally speaking, these methods take an axis argument, 
+just like ndarray.{sum, std, …}, but the axis can be specified by name or integer.
 
 
 - Series: no axis argument needed.
@@ -980,7 +1395,9 @@ There exists a large number of methods for computing descriptive statistics and 
 
 The following table list down the important functions under Descriptive Statistics in Python Pandas. 
 
+
 - 1     **count()** -	Number of non-null observations
+
 
 - 2	  **sum()** -	Sum of values
 
@@ -1028,18 +1445,25 @@ Functions like **abs()**, **cumprod()** throw exception when the dataframe conta
 
 ### Summarizing data
 
+
 The **describe()** function computes the summary statistics of the numerical columns in the dataframe.
 
 This function gives the mean, std and IQR values. It excludes the character columns and gives summary about numeric columns. 
-It includes the argument which is used to pass necessary information regarding what columns need to be considered for summarizing. It takes the list of values; by default, 'number'.
+It includes the argument which is used to pass necessary information regarding what columns need to be considered for summarizing. 
+It takes the list of values; by default, 'number'.
+
 
 - object − Summarizes string columns
 
+
 - number − Summarizes numeric columns
+
 
 - all − Summarizes all columns together
 
+
 `df4=df.describe()`
+
 
 `df4.describe()`
 
@@ -1051,40 +1475,55 @@ It includes the argument which is used to pass necessary information regarding w
 
 Statistical functions help us to understand and analyze the behavior of data. In this section, I will discuss few statistical functions, which we can apply on Pandas objects.
 
+
 ### Percent_change
 
-Series, datFrames and panel, all have the function **pct_change()**. This function compares every element with its prior element and computes the change percentage.
+Series, datFrames and panel, all have the function **pct_change()**. This function compares every element with its prior element 
+and computes the change percentage.
+
 
 By default, the pct_change() operates on columns; if you want to apply the same row wise, then use axis=1() argument.
 
 
 ### Covariance
 
-Covariance is applied on series data. The series object has a method **cov()** to compute covariance between series objects. NA values will be excluded automatically.
+
+Covariance is applied on series data. The series object has a method **cov()** to compute covariance between series objects. 
+NA values will be excluded automatically.
+
 
 **Series.cov()** can be used to compute covariance between series (excluding missing values).
 
+
 Analogously, **dataFrame.cov()** to compute pairwise covariances among the series in the dataFrame, also excluding NA/null values.
 
+
 `df5=df.copy()`
+
 
 `df5.cov()`
 
 
-
 ### Correlation
+
 
 **Correlation** shows the linear relationship between any two array of values (series). There are multiple methods to compute the correlation. These methods are listed below:-
 
+
 **Method name**  	  **Description**
+
 
 - pearson (default)	-  Standard correlation coefficient
 
+
 - kendall           	-  Kendall Tau correlation coefficient
+
 
 - spearman	        -  Spearman rank correlation coefficient
 
+
 All of these are currently computed using pairwise complete observations.
+
 
 Any non-numeric columns will be automatically excluded from the correlation calculation.
 
@@ -1098,58 +1537,82 @@ Data Ranking produces ranking for each element in the array of elements. In case
 The **rank()** method produces a data ranking with ties being assigned the mean of the ranks (by default) for the group.
 
 
-The **rank()** is also a dataframe method and can rank either the rows (axis=0) or the columns (axis=1). NaN values are excluded from the ranking.
+The **rank()** is also a dataframe method and can rank either the rows (axis=0) or the columns (axis=1). NaN values are excluded 
+from the ranking.
 
-It optionally takes a parameter ascending which true by default. If it is set to false, data is ranked in descending order, with larger values assigned a smaller rank.
+
+It optionally takes a parameter ascending which true by default. If it is set to false, data is ranked in descending order, with 
+larger values assigned a smaller rank.
+
 
 The **rank()** supports different tie-breaking methods, specified with the method parameter as follows:-
 
+
 - **average** - average rank of tied group
+
 
 - **min** - lowest rank in the group
 
+
 - **max** - highest rank in the group
+
 
 - **first** - ranks assigned in the order they appear in the array
 
 
-
 ### Common statistical functions
+
 
 There are a number of common statistical functions. These are listed below:-
 
+
 **Method**    - **Description**
 
+
 - **count()** - Number of non-null observations
+
 
 - **sum()** -   Sum of values
 
 
 - **mean()** -  Mean of values
 
+
 - **median()** - Arithmetic median of values
+
 
 - **min()** -	Minimum
 
+
 - **max()** - 	Maximum
+
 
 - **std()** -	Standard deviation
 
+
 - **var()** -	Variance
+
 
 - **skew()** -	Skewness
 
+
 - **kurt()** -	Kurtosis
 
-- **quantile()** -	Quantile
+
+- **quantile()** -  Quantile
+
 
 - **apply()** -	Generic apply
 
+
 - **cov()** -	Covariance
+
 
 - **corr()** -	Correlation
 
-The **apply()** function takes an extra **func** argument and performs generic rolling computations. The **func** argument should be a single function that produces a single value from an ndarray input.
+
+The **apply()** function takes an extra **func** argument and performs generic rolling computations. The **func** argument should 
+be a single function that produces a single value from an ndarray input.
 
 
 ================================================================================
