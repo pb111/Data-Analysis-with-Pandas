@@ -1620,21 +1620,29 @@ be a single function that produces a single value from an ndarray input.
 
 ## 21. Window functions in pandas
 
-For working with numerical data, Pandas provide few variants like **rolling**, **expanding** and **exponentially moving weights** for window statistics. 
+
+For working with numerical data, Pandas provide few variants like **rolling**, **expanding** and **exponentially moving weights** 
+for window statistics. 
+
 
 Among these are **count**, **sum**, **mean**, **median**, **correlation**, **variance**, **covariance**, **standard deviation**, **skewness** and **kurtosis**.
 
+
 The **rolling()** and **expanding()** functions can be used directly from DataFrameGroupBy objects.
 
-In this section, we work with rolling, expanding and exponentially weighted data through the corresponding objects, **Rolling**, **Expanding** and **EWM**.
 
+In this section, I work with rolling, expanding and exponentially weighted data through the corresponding objects, **Rolling**, **Expanding** and **EWM**.
 
 
 ### .rolling() Function
 
-This function can be applied on a series of data. Specify the **window=n** argument and apply the appropriate statistical function on top of it.
+
+This function can be applied on a series of data. Specify the **window=n** argument and apply the appropriate statistical function 
+on top of it.
+
 
 `df6=df.copy()`
+
 
 `df6.rolling(window=3).mean()`
 
@@ -1642,28 +1650,33 @@ This function can be applied on a series of data. Specify the **window=n** argum
 Since the window size is 3, for first two elements there are nulls and from third the value will be the average of the n, n-1 and n-2 elements. We can also apply various functions.
 
 
-
 ### .expanding() Function
 
+
 This function can be applied on a series of data. We specify the **min_periods=n** argument and apply the appropriate statistical function on top of it.
+
 
 `df6.expanding(min_periods=3).mean()`
 
 
 ### .ewm() Function
 
+
 **ewm** is applied on a series of data. We have to specify any of the com, span, halflife argument and apply the appropriate statistical function on top of it. It assigns the weights exponentially.
+
 
 `df6.ewm(com=0.5).mean()`
 
 
-Window functions are used in finding the trends within the data graphically by smoothing the curve. If there is a lot of variation in the data, then we can apply window functions to smooth out the curve or the trend.
+Window functions are used in finding the trends within the data graphically by smoothing the curve. If there is a lot of 
+variation in the data, then we can apply window functions to smooth out the curve or the trend.
 
 
 ================================================================================
 
 
 ## 22. Aggregations in pandas
+
 
 Once the rolling, expanding and ewm objects are created, several methods are available to perform aggregations on data.
 
@@ -1679,25 +1692,33 @@ Once the rolling, expanding and ewm objects are created, several methods are ava
 
 ### Apply aggregation on a single column of a dataframe
 
+
 `df6=df.copy()`
+
 
 `df6['Purchase'].aggregate(np.sum)`
 
 
 ### Apply multiple functions on a single column of a dataframe
 
+
 `df6['Purchase'].aggregate([np.sum, np.mean])`
 
 
 ### Apply aggregation on multiple columns of a dataframe
 
+
 `df6[['Product_Category_1', 'Product_Category_2', Product_Category_3']].aggregate(np.mean)`
+
 
 ### Apply multiple functions on multiple columns of a dataframe
 
+
 `df6[['Product_Category_1', 'Product_Category_2', 'Product_Category_3']].aggregate([np.sum, np.mean])`
 
+
 ### Apply different functions to different columns of a dataframe
+
 
 df6.aggregate({'Product_Category_1' : np.sum ,'Product_Category_2' : np.mean})
 
@@ -1707,14 +1728,22 @@ df6.aggregate({'Product_Category_1' : np.sum ,'Product_Category_2' : np.mean})
 
 ## 23. Iteration in pandas
 
-The behaviour of basic iteration over pandas objects depends on the type. When iterating over a series, it is regarded as array-like, and basic iteration produces the values. Other data structures, like dataframe and panel, follow the **dict-like** convention of iterating over the **keys** of the objects.
+
+The behaviour of basic iteration over pandas objects depends on the type. When iterating over a series, it is regarded as 
+array-like, and basic iteration produces the values. Other data structures, like dataframe and panel, follow the **dict-like** convention of iterating over the **keys** of the objects.
+
+
 Iterating a dataframe gives column names.
 
-To iterate over the rows of the DataFrame, we can use the following functions −
+
+To iterate over the rows of the DataFrame, we can use the following functions :−
+
 
 - **iteritems()** − to iterate over the (key,value) pairs
 
+
 - **iterrows()** − iterate over the rows as (index,series) pairs
+
 
 - **itertuples()** − iterate over the rows as namedtuples
 
@@ -1724,45 +1753,67 @@ To iterate over the rows of the DataFrame, we can use the following functions �
 
 ## 24. Function application in pandas
 
-There are three important methods that enable us to apply our own or another library's functions to pandas objects. These methods differentiate on their scope of usage. These functions expect to operate on an entire dataframe, row- or column-wise operation, or element wise operation. These methods are described below:-
+
+There are three important methods that enable us to apply our own or another library's functions to pandas objects. 
+These methods differentiate on their scope of usage. These functions expect to operate on an entire dataframe, 
+row- or column-wise operation, or element wise operation. These methods are described below:-
+
 
 - Table wise Function Application: **pipe()**
 
+
 - Row or Column Wise Function Application: **apply()**
+
 
 - Element wise Function Application: **applymap()**
 
 
 ### Table-wise function application:pipe()
 
-Custom operations can be performed by passing the function and the appropriate number of parameters as pipe arguments. Thus, operation is performed on the whole DataFrame.
+
+Custom operations can be performed by passing the function and the appropriate number of parameters as pipe arguments. 
+Thus, operation is performed on the whole DataFrame.
+
 
 For example, if we want to add a value 10 to all the elements in the DataFrame. Then, we can make use of **pipe()** function as follows:-
 
 
 `def addten(x1,x2):`
+
+
        ``return x1+x2`
+       
 
-`df7=df.copy()` 
+`df7=df.copy()`
 
-`df7.pipe(addten,10)``
+
+`df7.pipe(addten,10)`
 
 
 ### Row or Column Wise Function Application: apply()
 
+
 Arbitrary functions can be applied along the axes of a DataFrame or Panel using the **apply()** method. It takes an optional axis argument. By default, the operation performs column wise, taking each column as an array-like.
+
 
 `df7.apply(np.mean)`
 
+
 By passing axis parameter, operations can be performed row wise.
+
 
 `df7.apply(np.mean,axis=1)`
 
+
 `df.apply(lambda x: x.max() - x.min())`
+
 
 ### Element Wise Function Application: applymap()
 
-The methods **applymap()** on dataframe and analogously **map()** on series accept any Python function. It takes a single value and returns a single value.
+
+The methods **applymap()** on dataframe and analogously **map()** on series accept any Python function. It takes a single value 
+and returns a single value.
+
 
 `df7.applymap(lambda x:x*100)`
 
@@ -1772,7 +1823,9 @@ The methods **applymap()** on dataframe and analogously **map()** on series acce
 
 ## 25. Pandas GroupBy operations
 
+
 A groupby operation involves one of the following operations on the original object. They are as follows:−
+
 
 - **Splitting** the Object
 
@@ -1783,56 +1836,76 @@ A groupby operation involves one of the following operations on the original obj
 - **Combining** the results
 
 
+The split step is the most straightforward out of these. In many situations, we may wish to split the data set into groups 
+and perform operations on those groups.
 
-The split step is the most straightforward out of these. In many situations, we may wish to split the data set into groups and perform operations on those groups.
 
 In the apply functionality, we can perform the following operations :−
 
-- **Aggregation** − compute a summary statistic (or statistics) for each group. Some examples are:- 
 
-     - Compute group sums or means.                  
+- **Aggregation** − compute a summary statistic (or statistics) for each group. Some examples are:-
+
+
+     - Compute group sums or means.
+     
                   
      - Compute group sizes / counts.
 
 
 - **Transformation** − perform some group-specific computations and return a like-indexed object. Some examples are :-
 
+
     - Standardize data (zscore) within a group.
+    
     
     - Filling NAs within groups with a value derived from each group.
 
 
-
 - **Filtration** − discarding the data with some condition.  Some examples are :-
 
+
     - Discard data that belongs to groups with only a few members.
+    
     
     - Filter out data based on the group sum or mean.
     
        
-- Some combination of the above: **GroupBy** will examine the results of the apply step and try to return a sensibly combined result if it doesn't fit into either of the above two categories.
+- Some combination of the GroupBy functions :-
+
+
+**GroupBy** will examine the results of the apply step and try to return a sensibly combined result if it doesn't fit into 
+either of the above two categories.
 
 
 ### Split Data into Groups
 
+
 Pandas object can be split into any of their objects. There are multiple ways to split an object as follows :-
+
 
 - obj.groupby('key')
 
+
 - obj.groupby(['key1','key2'])
+
 
 - obj.groupby(key,axis=1)
 
 
 The following example illustrates the idea:-
 
+
 `df8=df.copy()`
+
 
 `df8.groupby('Gender')`
 
+
 view groups of Gender column
 
+
 `df8.groupby('Gender').groups`
+
 
 ### group by with multiple columns
 
@@ -1853,10 +1926,9 @@ With the groupby object in hand, we can iterate through the object similar to it
 
    `print Age`
    
-   `print Occupation`
-   
-  
-   
+   `print Occupation`   
+
+
 ### Select a group
 
 
@@ -1871,48 +1943,66 @@ Using the **get_group()** method, we can select a single group.
 
 ### Aggregation functions with groupby
 
+
 An aggregation function returns a single aggregated value for each group. Once the group by object is created, several aggregation operations can be performed on the grouped data as follows:-
 
+
 apply aggregation function sum with groupby
+
 
 `df8.groupby('Gender').sum()`
 
 
 alternative way to apply aggregation function sum
 
+
 `df8.groupby('Gender').agg(np.sum)`
 
 
 Another way to see the size of each group is by applying the **size()** function as follows:-
 
+
 `df8_grouped = df8.groupby('Gender')`
+
 
 `print(df8_grouped.agg(np.size))`
 
 
 ### Applying multiple aggregation functions at once
 
-With grouped series, you can also pass a list or dict of functions to do aggregation with, and generate dataframe as output as follows:-
+
+With grouped series, you can also pass a list or dict of functions to do aggregation with, and generate dataframe as 
+output as follows:-
+
 
 `df8.groupby('Gender')['Purchase'].agg([np.sum, np.mean])`
 
 
-### Transformations
+### Transformation
 
-Transformation on a group or a column returns an object that is indexed the same size of that is being grouped. Thus, the transform should return a result that is the same size as that of a group chunk.
+
+Transformation on a group or a column returns an object that is indexed the same size of that is being grouped. Thus, the 
+transform should return a result that is the same size as that of a group chunk.
+
 
 `df9=df.copy()`
 
+
 `score = lambda x: (x - x.mean()) / x.std()*10`
+
 
 `print(df9.groupby('Gender')['Purchase'].transform(score).head(5))`
 
 
 ### Filtration
 
-Filtration filters the data on a defined criteria and returns the subset of data. The **filter()** function is used to filter the data.
+
+Filtration filters the data on a defined criteria and returns the subset of data. The **filter()** function is used to filter 
+the data.
+
 
 `df10=df.copy()`
+
 
 `df10.groupby('Gender').filter(lambda x: len(x) > 4)`
 
@@ -1923,7 +2013,9 @@ Filtration filters the data on a defined criteria and returns the subset of data
 ## 26. Pandas merging and joining 
 
 
-Pandas has full-featured, high performance in-memory join operations that are very similar to relational databases like SQL. These methods perform significantly better than other open source implementations like base::merge.data.frame in R. The reason for this is careful algorithmic design and the internal layout of the data in DataFrame.
+Pandas has full-featured, high performance in-memory join operations that are very similar to relational databases like SQL. 
+These methods perform significantly better than other open source implementations like base::merge.data.frame in R. The reason 
+for this is careful algorithmic design and the internal layout of the data in DataFrame.
 
 
 Pandas provides a single function, **merge**, as the entry point for all standard database join operations between DataFrame objects.
@@ -1932,9 +2024,7 @@ Pandas provides a single function, **merge**, as the entry point for all standar
 The syntax of the merge function is as follows:-
 
 
-
 `pd.merge(left, right, how='inner', on=None, left_on=None, right_on=None, left_index=False, right_index=False, sort=True)`
-
 
 
 The description of the parameters used is as follows−
@@ -1949,13 +2039,16 @@ The description of the parameters used is as follows−
 - **on** − Columns (names) to join on. Must be found in both the left and right DataFrame objects.
 
 
-- **left_on** − Columns from the left DataFrame to use as keys. Can either be column names or arrays with length equal to the length of the DataFrame.
+- **left_on** − Columns from the left DataFrame to use as keys. Can either be column names or arrays with length equal to 
+                the length of the DataFrame.
 
 
-- **right_on** − Columns from the right DataFrame to use as keys. Can either be column names or arrays with length equal to the length of the DataFrame.
+- **right_on** − Columns from the right DataFrame to use as keys. Can either be column names or arrays with length equal to 
+                the length of the DataFrame.
 
 
-- **left_index** − If True, use the index (row labels) from the left DataFrame as its join key(s). In case of a DataFrame with a MultiIndex (hierarchical), the number of levels must match the number of join keys from the right DataFrame.
+- **left_index** − If True, use the index (row labels) from the left DataFrame as its join key(s). In case of a DataFrame with a  
+                   MultiIndex (hierarchical), the number of levels must match the number of join keys from the right DataFrame.
 
 
 - **right_index** − Same usage as left_index for the right DataFrame.
@@ -1964,54 +2057,56 @@ The description of the parameters used is as follows−
 - **how** − One of 'left', 'right', 'outer', 'inner'. Defaults to inner. 
 
 
-- **sort** − Sort the result DataFrame by the join keys in lexicographical order. Defaults to True, setting to False will improve the performance substantially in many cases.
-
-
-Now, I will create two different DataFrames and perform the merging operations on them as follows:-
-
- merge two dataframes on a key
-
-`pd.merge(batsmen, bowler, on='id')`
-
-
-merge two dataframes on multiple keys
-
-`pd.merge(batsmen, bowler, on=['id', 'subject_id'])`
+- **sort** − Sort the result DataFrame by the join keys in lexicographical order. Defaults to True, setting to False will 
+             improve the performance substantially in many cases.
 
 
 
 ### Merge using 'how' argument
 
-The **how** argument to merge specifies how to determine which keys are to be included in the resulting table. If a key combination does not appear in either the left or the right tables, the values in the joined table will be **NA**.
 
-Here is a summary of the how options and their SQL equivalent names −
+The **how** argument to merge specifies how to determine which keys are to be included in the resulting table. If a key 
+combination does not appear in either the left or the right tables, the values in the joined table will be **NA**.
+
+
+Here is a summary of the how options and their SQL equivalent names :−
+
 
 - **Merge Method** -	**SQL Equivalent**	- **Description**
 
+
 -  left            -     LEFT OUTER JOIN	-   Use keys from left object
+
 
 - right	           -     RIGHT OUTER JOIN	-   Use keys from right object
 
+
 - outer	           -     FULL OUTER JOIN	-   Use union of keys
 
-- inner	           -     INNER JOIN	             -   Use intersection of keys
+
+- inner	           -     INNER JOIN	        -   Use intersection of keys
+
 
 left join
+
 
 `pd.merge(batsmen, bowler, on='subject_id', how='left')`
 
 
 right join
 
+
 `pd.merge(batsmen, bowler, on='subject_id', how='right')`
 
 
 outer join
 
+
 `pd.merge(batsmen, bowler, on='subject_id', how='outer')`
 
 
 inner join
+
 
 `pd.merge(batsmen, bowler, on='subject_id', how='inner')`
 
@@ -2025,11 +2120,15 @@ inner join
 Pandas provides various facilities for easily combining together series, dataframe and panel objects.
 
 
-The **concat()** function does all of the heavy lifting of performing concatenation operations along an axis while performing optional set logic (union or intersection) of the indexes (if any) on the other axes.
+The **concat()** function does all of the heavy lifting of performing concatenation operations along an axis while 
+performing optional set logic (union or intersection) of the indexes (if any) on the other axes.
+
 
 The syntax of the **concat()** function is as follows:-
 
-`pd.concat(objs, axis=0, join='outer', join_axes=None, ignore_index=False, keys=None, levels=None, names=None, verify_integrity=False, copy=True)`
+
+`pd.concat(objs, axis=0, join='outer', join_axes=None, ignore_index=False, keys=None, levels=None, names=None, 
+verify_integrity=False, copy=True)`
 
 
 The description of the arguments is as follows:-
@@ -2065,44 +2164,6 @@ The description of the arguments is as follows:-
 - **copy** : boolean, default True. If False, do not copy data unnecessarily.
 
 
-Now, I will create two dataframes and do concatenation as follows:-
-
-batsmen = pd.DataFrame({
-   'id':[1,2,3,4,5],
-   'Name': ['Rohit', 'Dhawan', 'Virat', 'Dhoni', 'Kedar'],
-   'subject_id':['sub1','sub2','sub4','sub6','sub5']})
-
-bowler = pd.DataFrame(
-   {'id':[1,2,3,4,5],
-   'Name': ['Kumar', 'Bumrah', 'Shami', 'Kuldeep', 'Chahal'],
-   'subject_id':['sub2','sub4','sub3','sub6','sub5']})
-team=[batsmen, bowler]
-
-`pd.concat(team)`
-
-associate keys with the dataframes
-
-`pd.concat(team, keys=['x', 'y'])`
-
-
-We can see the index of the resultant dataframe is duplicated. So each index is repeated.
-
-If the resultant object has to follow its own indexing, we can set **ignore_index** option to true as follows:-
-
-`pd.concat(team, keys=['x', 'y'], ignore_index=True)`
-
-
-If two objects need to be added along axis=1, then the new columns will be appended as follows:-
-
-`pd.concat(team, axis=1)`
-
-
-
-### Concatenating using append
-
-A useful shortcut to concat are the append instance methods on Series and DataFrame. These methods actually predated concat. They concatenate along axis=0, namely the index as follows :−
-
-`batsmen.append(bowler)`
 
 
 ================================================================================
@@ -2110,36 +2171,52 @@ A useful shortcut to concat are the append instance methods on Series and DataFr
 
 ## 28. Reshaping by melt and pivot
 
+
 ### Melt creates wide-to-long format dataframe
+
 
 When we take a closer look at our original dataframe, we can see that our dataset is not in the tidy data format.
 
+
 The columns `Product_Category_1`, `Product_Category_2` and `Product_Category_3` contain values of product_category rather than variables. We should reorganize our dataframe into tidy data format.
+
 
 The **melt()** function is useful to convert a DataFrame from **wide-to-long** format where one or more columns are identifier variables, while all other columns are considered measured variables. The measured variables are then "unpivoted" to the row axis, leaving non-identifier columns, "variable" and "value". The names of those columns can be customized by supplying the var_name and value_name parameters.
 
+
 We can convert our dataset into long data format using the **melt()** function as follows:-
 
+
 `df11=df.copy()`
+
 
 `pd.melt(frame=df11, id_vars=['User_ID','Product_ID', 'Gender','Age','Occupation','City_Category',
                              'Marital_Status','Purchase'],                          
                     value_vars=['Product_Category_1','Product_Category_2','Product_Category_3'], 
                     var_name='Product_Category', value_name='Amount')`
+                    
 
 
 ### Pivot creates long-to-wide format dataframe
 
+
 I have melt three columns `Product_Category_1`, `Product_Category_2` and `Product_Category_3` into a single column named `Product_Category` with **melt()** function. So, I have converted the above dataframe from wide to long format.
 
-Now, I will convert the above column `Product_Category` from long to wide format with **pivot()** function. **pivot()** function takes 3 arguments with the following names - index, columns, and values. As a value for each of these parameters we need to specify a column name in the original table. Then the **pivot()** function will create a new table, whose row and column indices are the unique values of the respective parameters. The cell values of the new table are taken from column given as the values parameter.
+
+Now, I will convert the above column `Product_Category` from long to wide format with **pivot()** function. **pivot()** function 
+takes 3 arguments with the following names - index, columns, and values. As a value for each of these parameters we need to specify 
+a column name in the original table. Then the **pivot()** function will create a new table, whose row and column indices are the 
+unique values of the respective parameters. The cell values of the new table are taken from column given as the values parameter.
+
 
 `df13=df12[['Product_Category', 'Amount']]`
+
 
 `df14=df13.pivot(index=None, columns='Product_Category', values='Amount')`
 
 
 ### Reshaping with pivot_table function
+
 
 Before calling the pivot() function, we need to ensure that our dataset does not have rows with duplicate values for the specified columns. If there are duplicate entries for rows in the dataset, the pivot() function, will throw a value error.
 
@@ -2154,34 +2231,46 @@ In this case, the **pivot_table()** method comes to rescue. It works like pivot,
 
 ## 29. Reshaping by stacking and unstacking
 
+
 There are two other methods called **stack()** and **unstack()** which closely resemble the **pivot()** method. These methods are designed to work together with multiindex objects. The functionality of these methods is described below:-
 
 
 ### Stacking
 
+
 Stacking means "pivot" a level of the (possibly hierarchical) column labels, returning a DataFrame with an index with a new inner-most level of row labels. So. stacking a dataframe means moving or pivoting the innermost column index to become the innermost row index. 
+
 
 It returned a reshaped dataframe or series having a multi-level index with one or more new inner-most levels compared to the current dataframe. The new inner-most levels are created by pivoting the columns of the current dataframe.
 
 
 - if the columns have a single level, the output is a Series.
 
+
 - if the columns have multiple levels, the new index level(s) is (are) taken from the prescribed level(s) and the output is a DataFrame.
 
-In this case, we looked at a dataframe with single level hierarchical indices on both axes. Stacking takes the most-inner column index (height, weight), makes it the most inner row index and reshuffles the cell values accordingly.
+
+In this case, we looked at a dataframe with single level hierarchical indices on both axes. Stacking takes the most-inner column 
+index (height, weight), makes it the most inner row index and reshuffles the cell values accordingly.
+
 
 `cols=pd.MultiIndex.from_tuples([('weight', 'kg'), ('weight', 'pounds')])`
 
 `df15=pd.DataFrame([[75,165], [60, 132]],
+
                  index=['husband', 'wife'],
+                 
                  columns=cols)`
 
-`df15.stack()`
+
+df15.stack()`
 
 
 ## Unstacking
 
+
 It is the inverse operation of stacking. It means "pivot" a level of the (possibly hierarchical) row index to the column axis, producing a reshaped dataframe with a new inner-most level of column labels.
+
 
 I will convert the stacked dataframe df16 back to original form as follows:-
 
@@ -2222,33 +2311,42 @@ Let us now understand how the functions operate.
 
 ### 1. get_option(param)
 
-**get_option()** takes a single parameter and returns the value as given in the output below –
+
+**get_option()** takes a single parameter and returns the value as given in the output below :–
+
 
 display maximum rows
+
 
 `pd.get_option("display.max_rows")`
 
 
 display maximum columns
 
+
 `pd.get_option("display.max_columns")`
+
 
 ### 2. set_option(param,value)
 
 
-**set_option()** takes two arguments and sets the value to the parameter as shown below –
+**set_option()** takes two arguments and sets the value to the parameter as shown below :–
 
 
 set maximum rows
 
+
 `pd.set_option("display.max_rows", 80)`
+
 
 `pd.get_option("display.max_rows")`
 
 
-# set maximum columns
+set maximum columns
+
 
 `pd.set_option("display.max_columns", 30)`
+
 
 `pd.get_option("display.max_columns")`
 
@@ -2260,47 +2358,57 @@ set maximum rows
 
 **reset_option()** takes an argument and sets the value back to the default value.
 
+
  display maximum rows
+ 
 
 `pd.reset_option("display.max_rows", 80)`
+
 
 `pd.get_option("display.max_rows")`
 
 
 display maximum columns
 
+
 `pd.reset_option("display.max_columns")`
+
 
 `pd.get_option("display.max_columns")`
 
 
 
-## 4. describe_option(param)
+### 4. describe_option(param)
+
 
 **describe_option()** prints the description of the argument.
 
 
 description of the display maximum rows parameter
 
+
 `pd.describe_option("display.max_rows")`
 
 
+### 5. option_context()
 
 
+**option_context()** context manager is used to set the option in with statement temporarily. Option values are restored 
+automatically when you exit with block.
 
-
-## 5. option_context()
-
-**option_context()** context manager is used to set the option in with statement temporarily. Option values are restored automatically when you exit with block.
 
 set the parameter value with option_context
 
+
 `with pd.option_context("display.max_rows",10):`
+
       `print(pd.get_option("display.max_rows"))`
+      
       `print(pd.get_option("display.max_rows"))`
 
 
-There is a difference between the first and the second print statements. The first statement prints the value set by **option_context()** which is temporary within the with context itself. After with context, the second print statement prints the configured value.
+There is a difference between the first and the second print statements. The first statement prints the value set by **option_context()** which is temporary within the with context itself. After with context, the second print statement 
+prints the configured value.
 
 
 ================================================================================
@@ -2314,11 +2422,15 @@ The material in this project is taken from the following books and websites:-
 
 1.	https://en.wikipedia.org/wiki/Pandas_(software)
 
+
 2.	https://pandas.pydata.org/
+
 
 3.	https://www.tutorialspoint.com/python_pandas
 
+
 4.	Python for Data Analysis by Wes McKinney
+
 
 5.	Mastering pandas by Femi Anthony
 
